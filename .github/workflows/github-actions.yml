@@ -5,16 +5,21 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "このジョブは ${{ github.event_name }} イベントにより自動的に実行されました。"
+      - run: echo "このジョブはGitHubがホストする ${{ runner.os }} サーバで動作しています。"
+      - run: echo "ブランチ名： ${{ github.ref }}  リポジトリ名： ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "${{ github.repository }} リポジトリはrunnerによりクローンされました。"
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
       - run: cat post.txt
       - run: node .github/workflows/runner.js
+      - run: cd ..
+      - run: pwd
+      - run: git clone --filter=blob:none https://github.com/tayama222/tayama222.github.io.git
+      - run: ls -al tayama222.github.io/tweet/
+      - run: tree
       - run: echo "🍏 This job's status is ${{ job.status }}."
